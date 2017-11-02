@@ -18,7 +18,7 @@ module.exports = function () {
   mongoClient.then(db => {
     service.Model = db.collection('users');
   });
-
+  
   service.hooks(hooks);
 
   if (service.filter) {
