@@ -1,4 +1,5 @@
 {
-  "host": "e-pres-server-app.feathersjs.com",
-  "port": "PORT"
+  "host": "e-prescription.herokuapp.com/",
+  "port": "PORT",
+  "mongodb": "MONGODB_URI"
 }

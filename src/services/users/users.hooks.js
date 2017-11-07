@@ -24,7 +24,7 @@ const setIDs = (obj) => {
     if (typeof obj[i] == 'object') {
       setIDs(obj[i]);
     } else {
-      if (i == '_id') {
+      if (i == '_id' && !obj[i].length) {
         obj[i] = new ObjectID();
       }
     }
@@ -33,10 +33,9 @@ const setIDs = (obj) => {
 
 
 const convertId = (hook) => {
-  const {
-    query = {}
-  } = hook.params;
+  const { query = {} } = hook.params;
   updateIDsInQuery(query);
+  updateIDsInQuery(hook.data);
   hook.params.query = query;
   return hook;
 };
@@ -56,7 +55,8 @@ module.exports = {
     get: [...restrict],
     create: [hashPassword()],
     update: [
-      addIDs,
+      // addIDs,
+      // convertId,
       ...restrict,
       hashPassword()
     ],
@@ -65,7 +65,7 @@ module.exports = {
       ...restrict,
       hashPassword()
     ],
-    remove: [...restrict]
+    remove: [convertId, ...restrict]
   },
 
   after: {
