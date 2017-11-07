@@ -52,11 +52,11 @@ module.exports = {
     find: [
       // authenticate('jwt')
     ],
-    get: [...restrict],
+    get: [(hook)=>{ console.log(hook); return hook}, ...restrict],
     create: [hashPassword()],
     update: [
-      // addIDs,
-      // convertId,
+      addIDs,
+      convertId,
       ...restrict,
       hashPassword()
     ],
@@ -65,7 +65,7 @@ module.exports = {
       ...restrict,
       hashPassword()
     ],
-    remove: [convertId, ...restrict]
+    remove: [...restrict]
   },
 
   after: {

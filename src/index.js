@@ -10,5 +10,5 @@ process.on('unhandledRejection', (reason, p) =>
 
 
 server.on('listening', () =>
-  logger.info('Feathers application started on http://%s:%d %s', app.get('host'), port, process.env.MONGODB_URI)
+  logger.info('Feathers application started on http://%s:%d %s', app.get('host'), port, process.env)
 );
