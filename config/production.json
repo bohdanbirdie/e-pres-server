@@ -1,5 +1,5 @@
 {
-  "host": "e-prescription.herokuapp.com/",
+  "host": "blooming-castle-31589.herokuapp.com",
   "port": "PORT",
   "mongodb": "MONGODB_URI"
 }
