@@ -12,7 +12,7 @@ const updateIDsInQuery = (obj) => {
     if (typeof obj[i] == 'object') {
       updateIDsInQuery(obj[i]);
     } else {
-      if (i == '_id') {
+      if (i == '_id' && obj[i].length) {
         obj[i] = new ObjectID(obj[i]);
       }
     }
@@ -52,7 +52,7 @@ module.exports = {
     find: [
       // authenticate('jwt')
     ],
-    get: [(hook)=>{ console.log(hook); return hook}, ...restrict],
+    get: [...restrict],
     create: [hashPassword()],
     update: [
       addIDs,
